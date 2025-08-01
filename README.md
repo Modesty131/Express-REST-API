@@ -1,84 +1,88 @@
-# Express-REST-API APP
+# Express REST API
 
-In this project, I developed a functional Express REST API App that is functional and renders the message "Hello World!". 
+## Setup Instructions
 
-This project implements the following componenets:
+1. Extract the ZIP file
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Start the server:
+   ```
+   npm start
+   ```
+4. API will run on `http://localhost:3000`
 
-Set up a basic Express app with middleware
+---
 
-Define a root route (/) returning “Hello, World!”
+## API Endpoints
 
-Implement full CRUD operations on an in-memory items store
+### Root
+- **GET /**  
+Returns "Hello, World!"
 
-Handle validation errors, missing routes, and server errors
+### Items CRUD
+- **GET /items**  
+Retrieve all items
 
-Test the API via Postman or curl
+- **GET /items/:id**  
+Retrieve item by ID
 
-Examples request and expected responses includes the following:
+- **POST /items**  
+Create new item (JSON body required)
 
-Root Route
-Request GET http://localhost:3000/
+- **PUT /items/:id**  
+Update item by ID
 
-Response Status: 200 Body: Hello, World!
+- **DELETE /items/:id**  
+Delete item by ID
 
-Create an Item
-Request POST http://localhost:3000/items Headers: Content-Type: application/json Body:
+---
+
+## Example Postman Requests
+
+### 1. Get All Items
+```
+GET http://localhost:3000/items
+```
+
+### 2. Get Single Item
+```
+GET http://localhost:3000/items/1
+```
+
+### 3. Create Item
+```
+POST http://localhost:3000/items
+Content-Type: application/json
+
 {
-  "name": "Sample Item",
-  "description": "This is a test item."
+  "name": "Item 3",
+  "description": "Third item"
 }
+```
 
-Response Status: 201 Body:
+### 4. Update Item
+```
+PUT http://localhost:3000/items/1
+Content-Type: application/json
+
 {
-  "id": 1,
-  "name": "Sample Item",
-  "description": "This is a test item."
-}
-
-Retrieve All Items
-Request GET http://localhost:3000/items
-[
-  {
-    "id": 1,
-    "name": "Sample Item",
-    "description": "This is a test item."
-  }
-]
-
-Retrieve One Item
-Request GET http://localhost:3000/items/1
-
-Response Status: 200 Body:
-{
-  "id": 1,
-  "name": "Sample Item",
-  "description": "This is a test item."
-}
-
-Update an Item
-Request PUT http://localhost:3000/items/1 Headers: Content-Type: application/json Body:
-{
-  "id": 1,
   "name": "Updated Item",
-  "description": "Updated description."
+  "description": "Updated description"
 }
+```
 
-Delete an Item
-Request DELETE http://localhost:3000/items/1
+### 5. Delete Item
+```
+DELETE http://localhost:3000/items/1
+```
 
-Response Status: 204 Body: (no content)
+---
 
-Suggestions for Further development
-Use environment variables for configuration (e.g., PORT, database URLs).
+## Error Responses
 
-Add a process manager (PM2) or containerize the app with Docker for automated restarts and load balancing.
+- **404** Item or route not found
+- **400** Missing required fields
+- **500** Internal server error
 
-Replace the in-memory store with a persistent database (MongoDB, PostgreSQL) for real data durability.
-
-Implement request rate limiting, logging, and security middleware (Helmet, CORS).
-
-Thank you
-
-
-
-Response Status: 200 Body:
