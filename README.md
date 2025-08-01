@@ -1,8 +1,8 @@
-# Express REST API
+`# Express REST API APP
 
 ## Setup Instructions
 
-1. Extract the ZIP file
+1. Open the file in an IDE (e.g., VScode)
 2. Install dependencies:
    ```
    npm install
